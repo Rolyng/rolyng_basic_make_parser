@@ -1,8 +1,8 @@
-use clap::{Arg, ArgAction, Command, crate_authors, crate_version, crate_name, crate_description};
+use clap::{crate_authors, crate_description, crate_name, crate_version, Arg, ArgAction, Command};
 use rolyng_basic_make_parser::parse_make;
 
 pub fn main() -> anyhow::Result<()> {
-    let matches = Command::new(crate_name!())
+    let mut command = Command::new(crate_name!())
         .author(crate_authors!("\n"))
         .version(crate_version!())
         .about(crate_description!())
@@ -14,7 +14,16 @@ pub fn main() -> anyhow::Result<()> {
                 .help("Input file")
                 .required(false),
         )
-        .get_matches();
+        .subcommand(Command::new("author").about("Prints author"));
+    let matches = command.clone().get_matches();
+    if let Some(_) = matches.subcommand_matches("author") {
+        print_author();
+        return Ok(());
+    }
+    if !matches.args_present() {
+        let _ = command.print_help();
+        return Ok(());
+    }
     let myfile = matches.get_one::<String>("file").unwrap();
     let file = std::fs::read_to_string(myfile).expect("Error when reading file");
     let rules = parse_make(&file)?;
@@ -22,4 +31,8 @@ pub fn main() -> anyhow::Result<()> {
         println!("{}", rule);
     }
     Ok(())
+}
+
+fn print_author() {
+    println!("Author - Denys Honchar");
 }

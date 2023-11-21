@@ -42,7 +42,7 @@ mod tests {
         let pair = MakeParser::parse(Rule::recipe_command, "no prefix\n");
         assert!(pair.is_err());
 
-        let pair = MakeParser::parse(Rule::recipe_command, &test_str[0..test_str.len()-1]);
+        let pair = MakeParser::parse(Rule::recipe_command, &test_str[0..test_str.len() - 1]);
         assert!(pair.is_err());
 
         Ok(())
@@ -86,7 +86,6 @@ mod tests {
         assert!(pair.is_err());
 
         Ok(())
-    
     }
 
     #[test]
@@ -112,7 +111,7 @@ mod tests {
         let pair = MakeParser::parse(Rule::rule, &test_str);
         assert!(pair.is_ok());
 
-        let pair = MakeParser::parse(Rule::rule, &test_str[0..test_str.len()-1]);
+        let pair = MakeParser::parse(Rule::rule, &test_str[0..test_str.len() - 1]);
         assert!(pair.is_err());
 
         Ok(())

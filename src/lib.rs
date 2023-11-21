@@ -46,7 +46,7 @@ pub fn parse_make(input: &str) -> Result<Vec<MakeRule>, pest::error::Error<Rule>
                 .ok_or_else(|| {
                     pest::error::Error::<Rule>::new_from_span(
                         pest::error::ErrorVariant::CustomError {
-                            message: "Bad stuff".to_string(),
+                            message: "Error while parsing".to_string(),
                         },
                         pair.as_span(),
                     )
