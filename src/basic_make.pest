@@ -1,16 +1,16 @@
 file = {SOI ~ line+ ~ EOI}
-line = {(rule | empty_line )}
-empty_line = _{"\n"}
+line = {(EMPTY_LINE | rule)}
 rule = {rule_header ~ recipe}
 rule_header = {rule_name ~ ":" ~ dependencies? ~ "\n"}
 dependencies = {identifier ~ ("," ~ identifier)*}
 rule_name = {identifier}
-recipe = {recipe_command+}
+recipe = {EMPTY_LINE | (recipe_command+)}
 recipe_command = { RECIPE_PREFIX ~ shell_command ~ "\n"}
-shell_command = @{(!"\n" ~ ANY)*}
+shell_command = @{(!"\n" ~ ANY)+}
 identifier = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
 
-RECIPE_PREFIX = _{"abc"}
+RECIPE_PREFIX = _{"\t"}
+EMPTY_LINE = _{"\n"}
 WHITESPACE = _{ " " }
-COMMENT = _{ "#" ~ (!"\n" ~ ANY)* ~ "\n" }
+COMMENT = _{ "#" ~ (!"\n" ~ ANY)*}
 

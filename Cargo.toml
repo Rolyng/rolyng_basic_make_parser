@@ -1,9 +1,10 @@
 [package]
-name = "rolyng_parser_c"
-description = "parser of c language for educational purpose"
-version = "0.1.1"
+name = "rolyng_basic_make_parser"
+description = "Basic make parser for educational purposes"
+version = "0.1.2"
 edition = "2021"
 license = "GPL-3.0-only"
+author = "Denys Honchar"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -11,3 +12,4 @@ license = "GPL-3.0-only"
 anyhow = "1.0.75"
 pest = "2.7.5"
 pest_derive = "2.7.5"
+clap = { version = "4.4.7", features = ["derive", "cargo"] }

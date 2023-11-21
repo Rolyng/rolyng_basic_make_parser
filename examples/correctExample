@@ -1,0 +1,13 @@
+#comment
+aaa: bbb, ccc #comment
+	echo ab
+
+bbb: adsa
+	echo bbb
+
+ccc:
+	echo ccc
+	cat boba
+
+ddd:
+

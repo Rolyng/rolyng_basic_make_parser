@@ -1,6 +1,7 @@
-### rolyng_parser_c
+### rolyng_basic_make_parser
 
-Parser for educational purpose
+Parser of basic make syntax for educational purpose
+
 
 ### Sample
 
