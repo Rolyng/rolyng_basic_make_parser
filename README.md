@@ -63,8 +63,8 @@ ccc:
 
 ddd:
 ```
-
-```
+Outputs: 
+```output
 Rule 
 	name: aaa
 	dependencies: bbb,ccc,
